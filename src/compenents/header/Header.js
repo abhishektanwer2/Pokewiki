@@ -39,7 +39,7 @@ const Header = (props) => {
         <Collapse isOpen={isOpen} navbar>
           <Nav className="mr-auto" navbar>
             <NavItem>
-              <NavLink href="/components/">Components</NavLink>
+              <NavLink href="/components/">PokeWiki</NavLink>
             </NavItem>
             <NavItem>
               <NavLink href="#">Pokemon</NavLink>
