@@ -1,18 +1,20 @@
 import React from "react";
+import { Container } from "reactstrap";
 import { hot } from 'react-hot-loader';
 
 import Header from "../src/compenents/header/Header";
 import Footer from "../src/compenents/footer/Footer";
+import Banner from "./compenents/banner";
 
 import "./App.css";
 
 function App() {
   return (
-    <div className="App">
+    <Container fluid className="App bg-dark">
       <Header />
-      <p>Hello World!</p>
+      <Banner />
       <Footer />
-    </div>
+    </Container>
   );
 }
 
