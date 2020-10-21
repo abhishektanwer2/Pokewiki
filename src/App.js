@@ -1,12 +1,14 @@
-import React from 'react';
-import './App.css';
+import React from "react";
+import "./App.css";
+import Header from "../src/compenents/header/Header";
+import Footer from "../src/compenents/footer/Footer";
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <p>Hello World!</p>
-      </header>
+      <Header />
+      <p>Hello WOeld</p>
+      <Footer />
     </div>
   );
 }
