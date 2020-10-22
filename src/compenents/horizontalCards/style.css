@@ -1,0 +1,21 @@
+.cardsContainer {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  overflow-x: auto;
+}
+.cardsContainer::-webkit-scrollbar {
+  /* display: none; */
+  /* width: 5px; */
+}
+.pokemonCard {
+  min-width: 200px;
+  margin: 5px;
+  transition: transform .5s ease
+}
+.pokemonCard:hover {
+  -ms-transform: scale(1.5); 
+  -webkit-transform: scale(1.5);
+  transform: scale(1.5); 
+  z-index: 9999;
+}
