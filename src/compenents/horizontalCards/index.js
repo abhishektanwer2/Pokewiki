@@ -1,30 +1,28 @@
-import React from 'react';
-import { Card, Row, Col } from 'reactstrap';
+import React, { useState } from 'react';
+import { Card } from 'reactstrap';
 
 import './style.css';
 
 const HorizontalCards = (props) => {
-  const { data = [{ image: 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/2.png' },
-  { image: "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/25.png" },
-  { image: 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/1.png' },
-  { image: 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/2.png' },
-  { image: "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/25.png" },
-  { image: 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/1.png' }] } = props;
-
-  if (data.length > 0) {
-    return <div className='cardsContainer'>
+  const { pokemons } = props;
+  const IMAGE_URL = process.env.IMAGE_URL
+  if (pokemons.length > 0) {
+    return <div className='cardsContainer py-3'>
       {
-        data.map((pokemonData, index) => {
+        pokemons.map((pokemonData, index) => {
+          const { url } = pokemonData.pokemon
           return <div key={index} className='pokemonCard'>
             <Card className='box'>
-              <img src={pokemonData.image} className='w-100'></img>
+              <img src={IMAGE_URL + url.split('/')[url.split('/').length - 2] + '.png'} className='w-100'></img>
             </Card>
           </div>
         })
       }
     </div>
   }
-  return <div></div>
+  return <div>
+    <p>Something went wrong</p>
+  </div>
 }
 
 export default HorizontalCards;
