@@ -220,7 +220,6 @@ const Pokedetails = (props) => {
       <Evolve />
       <br></br>
       <p>Similiar pokemon</p>
-      <HorizontalCards className="shadow" />
     </div>
   );
 };

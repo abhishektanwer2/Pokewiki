@@ -1,9 +1,9 @@
 .bannerContainer {
-  background-color: darkgrey;
+  background-color: grey;
 }
-.carousel-item{
+.carousel-item {
   height: 300px;
-} 
-.carousel-item img{
+}
+.carousel-item img {
   height: 300px;
 }
