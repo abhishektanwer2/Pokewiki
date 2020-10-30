@@ -9,13 +9,13 @@
   /* width: 5px; */
 }
 .pokemonCard {
-  min-width: 200px;
+  min-width: 50px;
   margin: 5px;
-  transition: transform .5s ease
+  transition: transform 0.5s ease;
 }
 .pokemonCard:hover {
-  -ms-transform: scale(1.5); 
-  -webkit-transform: scale(1.5);
-  transform: scale(1.5); 
+  -ms-transform: scale(1.2);
+  -webkit-transform: scale(1.2);
+  transform: scale(1.5);
   z-index: 9999;
 }
