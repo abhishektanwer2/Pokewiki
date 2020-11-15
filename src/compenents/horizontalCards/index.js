@@ -21,7 +21,7 @@ const HorizontalCards = (props) => {
                     ".png"
                   }
                   className="w-100"
-                ></img>
+                />
               </Card>
             </div>
           );

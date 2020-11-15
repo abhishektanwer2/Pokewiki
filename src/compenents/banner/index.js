@@ -11,20 +11,17 @@ import './banner.css'
 
 const items = [
   {
-    src:
-      "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/2.png",
+    src: `${process.env.IMAGE_URL}/25.png`,
     altText: "",
     caption: "",
   },
   {
-    src:
-      "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/25.png",
+    src: `${process.env.IMAGE_URL}/4.png`,
     altText: "",
     caption: "",
   },
   {
-    src:
-      "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/1.png",
+    src: `${process.env.IMAGE_URL}/1.png`,
     altText: "",
     caption: "",
   },

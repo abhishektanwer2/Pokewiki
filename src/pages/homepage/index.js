@@ -1,6 +1,10 @@
 import React, { useEffect, useState } from 'react'
 
 import apiInstance from '../../api'
+
+import Header from '../../compenents/header'
+import Banner from '../../compenents/banner'
+import Footer from '../../compenents/footer'
 import HorizontalCards from '../../compenents/horizontalCards'
 
 function HomePage(props) {
@@ -23,28 +27,32 @@ function HomePage(props) {
     getFirePokemonsData()
   }, [])
 
-  if (waterPokemons || firePokemons) {
-    return <div>
-      {
-        waterPokemons && <div className='m-3'>
-          <h3>Water Pokemons</h3>
-          <div>
-            <HorizontalCards pokemons={waterPokemons.slice(0, 8)} />
-          </div>
-        </div>
-      }
-      {
-        firePokemons && <div className='m-3'>
-          <h3>Fire Pokemons</h3>
-          <div>
-            <HorizontalCards pokemons={firePokemons.slice(0, 8)} />
-          </div>
-        </div>
-      }
-    </div>
-  }
   return <div>
-    <p>Something went wrong...</p>
+    <Header />
+    <Banner />
+    {
+      (waterPokemons || firePokemons) ? <div>
+        {
+          waterPokemons && <div className='m-3'>
+            <h3>Water Pokemons</h3>
+            <div>
+              <HorizontalCards pokemons={waterPokemons.slice(0, 8)} />
+            </div>
+          </div>
+        }
+        {
+          firePokemons && <div className='m-3'>
+            <h3>Fire Pokemons</h3>
+            <div>
+              <HorizontalCards pokemons={firePokemons.slice(0, 8)} />
+            </div>
+          </div>
+        }
+        <Footer />
+      </div> : <div>
+          <p>Something went wrong...</p>
+        </div>
+    }
   </div>
 }
 
