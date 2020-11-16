@@ -16,18 +16,20 @@ const Pokedetails = (props) => {
 
   const getPokemonData = () => {
     const { match } = props
-    apiInstance.get(`/pokemon/${match.params.name}/`).then((data) => setPokemonData(data.data))
+    const name = match.params.name
+    apiInstance.get(`/pokemon/${name}/`).then((data) => setPokemonData(data.data))
   }
 
   const getpokemonSpeciesData = () => {
     const { match } = props
-    apiInstance.get(`/pokemon-species/${match.params.name}/`).then((data) => setpokemonSpeciesData(data.data))
+    const name = match.params.name
+    apiInstance.get(`/pokemon-species/${name}/`).then((data) => setpokemonSpeciesData(data.data))
   }
 
   useEffect(() => {
     getPokemonData()
     getpokemonSpeciesData()
-  }, [])
+  }, [props.match.params.name])
 
   const IMAGE_URL = process.env.IMAGE_URL
   const colorBasedOnType = { water: 'info', fire: 'warning', bug: 'success', flying: 'dark', poison: 'primary', normal: 'secondary' }
@@ -47,8 +49,8 @@ const Pokedetails = (props) => {
                 pokemonData.types && pokemonData.types.length && <p>
                   <b>Type: </b>
                   {
-                    pokemonData.types && pokemonData.types.map((type, index) => <Link to={`/pokewiki/type/${type.type.name}`}>
-                      <Badge key={index}
+                    pokemonData.types && pokemonData.types.map((type, index) => <Link key={index} to={`/pokewiki/type/${type.type.name}`}>
+                      <Badge
                         color='info' className={`px-2 py-1 text-uppercase text-white ${colorBasedOnType[type.type.name] ? `bg-${colorBasedOnType[type.type.name]}` : 'bg-info'} ${(index + 1) !== pokemonData.types.length && 'mr-2'}`}>{type.type.name}
                       </Badge>
                     </Link>)
