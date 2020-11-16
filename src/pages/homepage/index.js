@@ -2,9 +2,7 @@ import React, { useEffect, useState } from 'react'
 
 import apiInstance from '../../api'
 
-import Header from '../../compenents/header'
 import Banner from '../../compenents/banner'
-import Footer from '../../compenents/footer'
 import HorizontalCards from '../../compenents/horizontalCards'
 
 function HomePage(props) {
@@ -28,7 +26,6 @@ function HomePage(props) {
   }, [])
 
   return <div>
-    <Header />
     <Banner />
     {
       (waterPokemons || firePokemons) ? <div>
@@ -48,7 +45,6 @@ function HomePage(props) {
             </div>
           </div>
         }
-        <Footer />
       </div> : <div>
           <p>Something went wrong...</p>
         </div>

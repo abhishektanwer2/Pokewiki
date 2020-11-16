@@ -37,7 +37,7 @@ const Header = (props) => {
           <div>
             <Nav navbar>
               <NavItem>
-                <NavLink href="/components/">PokeWiki</NavLink>
+                <NavLink href="/">PokeWiki</NavLink>
               </NavItem>
               <NavItem>
                 <NavLink href="#">Pokemon</NavLink>
