@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { Link } from "react-router-dom";
 import { Card } from "reactstrap";
 
 import "./style.css";
@@ -11,17 +12,13 @@ const HorizontalCards = (props) => {
       <div className="cardsContainer py-3">
         {pokemons.map((pokemonData, index) => {
           const { url } = pokemonData.pokemon;
+          const id = url.split("/")[url.split("/").length - 2]
           return (
             <div key={index} className="pokemonCard">
               <Card className="box shadow">
-                <img
-                  src={
-                    IMAGE_URL +
-                    url.split("/")[url.split("/").length - 2] +
-                    ".png"
-                  }
-                  className="w-100"
-                />
+                <Link to={`/pokemon/${id}`}>
+                  <img src={IMAGE_URL + id + ".png"} className="w-100" />
+                </Link>
               </Card>
             </div>
           );
