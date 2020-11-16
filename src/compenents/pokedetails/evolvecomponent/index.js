@@ -41,7 +41,7 @@ const Evolve = (props) => {
                 </Link>
               </div>
               <div className='align-self-center'>
-                <FontAwesomeIcon icon={faArrowRight} size="3x" />
+                <FontAwesomeIcon icon={faArrowRight} size="3x" style={evolutionChainData.chain.evolves_to.length ? {} : { visibility: 'hidden' }} />
               </div>
             </div>
           </Col>
@@ -60,13 +60,13 @@ const Evolve = (props) => {
                   </Link>
                 </div>
                 <div className='align-self-center'>
-                  <FontAwesomeIcon icon={faArrowRight} size="3x" />
+                  <FontAwesomeIcon icon={faArrowRight} size="3x" style={evolutionChainData.chain.evolves_to[0].evolves_to.length ? {} : { visibility: 'hidden' }} />
                 </div>
               </div>
             </Col>
           }
           {
-            evolutionChainData.chain.evolves_to[0].evolves_to.length && <Col sm='4' className='text-center'>
+            evolutionChainData.chain.evolves_to[0].evolves_to.length ? <Col sm='4' className='text-center'>
               <div className='d-flex flex-row'>
                 <div>
                   <Link to={`/pokewiki/${evolutionChainData.chain.evolves_to[0].evolves_to[0].species.name}`}>
@@ -83,7 +83,7 @@ const Evolve = (props) => {
                   <FontAwesomeIcon icon={faArrowRight} size="3x" style={{ visibility: 'hidden' }} />
                 </div>
               </div>
-            </Col>
+            </Col> : null
           }
         </Row>
       }
