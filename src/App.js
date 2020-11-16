@@ -5,7 +5,7 @@ import { Route } from 'react-router-dom'
 import Header from './compenents/header'
 import Footer from './compenents/footer'
 import HomePage from "./pages/homepage";
-import Pokedetails from "./compenents/pokedetails";
+import Pokedetails from "./pages/pokeDetailsPage";
 import PokemonList from './pages/pokemonsListPage'
 
 import "./App.css";

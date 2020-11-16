@@ -3,9 +3,9 @@ import { Row, Col, Card, Badge } from "reactstrap";
 import { Link } from "react-router-dom";
 
 import apiInstance from '../../api'
-import Evolve from "./evolvecomponent";
-import Progressbar from './progressbar'
-import HorizontalCards from "../horizontalCards";
+import Evolution from "../../compenents/evolution";
+import Statsbar from '../../compenents/statsbar'
+import HorizontalCards from "../../compenents/horizontalCards";
 
 import "../../styles/custom.css";
 
@@ -109,7 +109,7 @@ const Pokedetails = (props) => {
                   <h4 className="small font-weight-bold">
                     {stat.stat.name}<span className="float-right">{`${stat.base_stat}`}</span>
                   </h4>
-                  <Progressbar stat={stat} />
+                  <Statsbar stat={stat} />
                 </div>)
               }
             </div>
@@ -119,7 +119,7 @@ const Pokedetails = (props) => {
       <br></br>
       <h4>Evolutions</h4>
       {
-        pokemonSpeciesData.evolution_chain && <Evolve url={pokemonSpeciesData.evolution_chain.url} />
+        pokemonSpeciesData.evolution_chain && <Evolution url={pokemonSpeciesData.evolution_chain.url} />
       }
       <p>Similiar pokemon</p>
     </div>
