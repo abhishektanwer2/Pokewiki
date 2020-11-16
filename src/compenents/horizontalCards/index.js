@@ -13,10 +13,11 @@ const HorizontalCards = (props) => {
         {pokemons.map((pokemonData, index) => {
           const { url } = pokemonData.pokemon;
           const id = url.split("/")[url.split("/").length - 2]
+          const name = pokemonData.pokemon.name
           return (
             <div key={index} className="pokemonCard">
               <Card className="box shadow">
-                <Link to={`/pokemon/${id}`}>
+                <Link to={`/pokewiki/${name}`}>
                   <img src={IMAGE_URL + id + ".png"} className="w-100" />
                 </Link>
               </Card>

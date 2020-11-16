@@ -1,9 +1,11 @@
 import React, { useState, useEffect } from "react";
 import { Row, Col, Card } from "reactstrap";
+import { Link } from "react-router-dom";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faArrowRight } from '@fortawesome/free-solid-svg-icons'
 
 import apiInstance from '../../../api'
+import './styles.css'
 
 const Evolve = (props) => {
 
@@ -28,13 +30,15 @@ const Evolve = (props) => {
           <Col sm='4' className='text-center'>
             <div className='d-flex flex-row'>
               <div className='h-100'>
-                <img
-                  src={IMAGE_URL + evolutionChainData.chain.species.url.split("/")[evolutionChainData.chain.species.url.split("/").length - 2] + ".png"}
-                  className="rounded-circle w-50 bg-secondary mx-auto p-3"
-                />
-                <div className='mt-3'>
-                  <h4>{evolutionChainData.chain.species.name}</h4>
-                </div>
+                <Link to={`/pokewiki/${evolutionChainData.chain.species.name}`}>
+                  <img
+                    src={IMAGE_URL + evolutionChainData.chain.species.url.split("/")[evolutionChainData.chain.species.url.split("/").length - 2] + ".png"}
+                    className="rounded-circle w-50 bg-secondary mx-auto p-3"
+                  />
+                  <div className='mt-3'>
+                    <h4>{evolutionChainData.chain.species.name}</h4>
+                  </div>
+                </Link>
               </div>
               <div className='align-self-center'>
                 <FontAwesomeIcon icon={faArrowRight} size="3x" />
@@ -45,13 +49,15 @@ const Evolve = (props) => {
             evolutionChainData.chain.evolves_to.length && <Col sm='4' className='text-center'>
               <div className='d-flex flex-row'>
                 <div>
-                  <img
-                    src={IMAGE_URL + evolutionChainData.chain.evolves_to[0].species.url.split("/")[evolutionChainData.chain.evolves_to[0].species.url.split("/").length - 2] + ".png"}
-                    className="rounded-circle w-50 bg-secondary mx-auto p-3"
-                  />
-                  <div className='mt-3'>
-                    <h4>{evolutionChainData.chain.evolves_to[0].species.name}</h4>
-                  </div>
+                  <Link to={`/pokewiki/${evolutionChainData.chain.evolves_to[0].species.name}`}>
+                    <img
+                      src={IMAGE_URL + evolutionChainData.chain.evolves_to[0].species.url.split("/")[evolutionChainData.chain.evolves_to[0].species.url.split("/").length - 2] + ".png"}
+                      className="rounded-circle w-50 bg-secondary mx-auto p-3"
+                    />
+                    <div className='mt-3'>
+                      <h4>{evolutionChainData.chain.evolves_to[0].species.name}</h4>
+                    </div>
+                  </Link>
                 </div>
                 <div className='align-self-center'>
                   <FontAwesomeIcon icon={faArrowRight} size="3x" />
@@ -63,13 +69,15 @@ const Evolve = (props) => {
             evolutionChainData.chain.evolves_to[0].evolves_to.length && <Col sm='4' className='text-center'>
               <div className='d-flex flex-row'>
                 <div>
-                  <img
-                    src={IMAGE_URL + evolutionChainData.chain.evolves_to[0].evolves_to[0].species.url.split("/")[evolutionChainData.chain.evolves_to[0].evolves_to[0].species.url.split("/").length - 2] + ".png"}
-                    className="rounded-circle w-50 bg-secondary mx-auto p-3"
-                  />
-                  <div className='mt-3'>
-                    <h4>{evolutionChainData.chain.evolves_to[0].evolves_to[0].species.name}</h4>
-                  </div>
+                  <Link to={`/pokewiki/${evolutionChainData.chain.evolves_to[0].evolves_to[0].species.name}`}>
+                    <img
+                      src={IMAGE_URL + evolutionChainData.chain.evolves_to[0].evolves_to[0].species.url.split("/")[evolutionChainData.chain.evolves_to[0].evolves_to[0].species.url.split("/").length - 2] + ".png"}
+                      className="rounded-circle w-50 bg-secondary mx-auto p-3"
+                    />
+                    <div className='mt-3'>
+                      <h4>{evolutionChainData.chain.evolves_to[0].evolves_to[0].species.name}</h4>
+                    </div>
+                  </Link>
                 </div>
                 <div className='align-self-center'>
                   <FontAwesomeIcon icon={faArrowRight} size="3x" style={{ visibility: 'hidden' }} />

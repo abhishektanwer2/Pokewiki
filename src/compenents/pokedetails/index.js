@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { Row, Col, Card, Badge } from "reactstrap";
+import { Link } from "react-router-dom";
 
 import apiInstance from '../../api'
 import Evolve from "./evolvecomponent";
@@ -15,12 +16,12 @@ const Pokedetails = (props) => {
 
   const getPokemonData = () => {
     const { match } = props
-    apiInstance.get(`/pokemon/${match.params.id}/`).then((data) => setPokemonData(data.data))
+    apiInstance.get(`/pokemon/${match.params.name}/`).then((data) => setPokemonData(data.data))
   }
 
   const getpokemonSpeciesData = () => {
     const { match } = props
-    apiInstance.get(`/pokemon-species/${match.params.id}/`).then((data) => setpokemonSpeciesData(data.data))
+    apiInstance.get(`/pokemon-species/${match.params.name}/`).then((data) => setpokemonSpeciesData(data.data))
   }
 
   useEffect(() => {
@@ -28,14 +29,14 @@ const Pokedetails = (props) => {
     getpokemonSpeciesData()
   }, [])
 
-  const { match } = props
   const IMAGE_URL = process.env.IMAGE_URL
+  const colorBasedOnType = { water: 'info', fire: 'warning', bug: 'success', flying: 'dark', poison: 'primary', normal: 'secondary' }
   return (
     <div className="p-3">
       <Card className="shadow">
         <Row>
           <Col md={{ size: 4, offset: 1 }} sm={12} className='text-center'>
-            <img src={IMAGE_URL + match.params.id + ".png"} />
+            <img src={IMAGE_URL + pokemonData.id + ".png"} />
           </Col>
           <Col md={7} sm={12}>
             <div className='m-3'>
@@ -44,7 +45,14 @@ const Pokedetails = (props) => {
             <div className="card-body">
               {
                 pokemonData.types && pokemonData.types.length && <p>
-                  <b>Type: </b> <Badge color='info' className='px-2 py-1 text-uppercase text-white'>{pokemonData.types[0].type.name}</Badge>
+                  <b>Type: </b>
+                  {
+                    pokemonData.types && pokemonData.types.map((type, index) => <Link to={`/pokewiki/type/${type.type.name}`}>
+                      <Badge key={index}
+                        color='info' className={`px-2 py-1 text-uppercase text-white ${colorBasedOnType[type.type.name] ? `bg-${colorBasedOnType[type.type.name]}` : 'bg-info'} ${(index + 1) !== pokemonData.types.length && 'mr-2'}`}>{type.type.name}
+                      </Badge>
+                    </Link>)
+                  }
                 </p>
               }
               {
@@ -109,7 +117,7 @@ const Pokedetails = (props) => {
         </Col>
       </Row>
       <br></br>
-      <h4>Evolving Pokemon</h4>
+      <h4>Evolutions</h4>
       {
         pokemonSpeciesData.evolution_chain && <Evolve url={pokemonSpeciesData.evolution_chain.url} />
       }

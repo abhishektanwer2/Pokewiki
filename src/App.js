@@ -5,7 +5,8 @@ import { Route } from 'react-router-dom'
 import Header from './compenents/header'
 import Footer from './compenents/footer'
 import HomePage from "./pages/homepage";
-import Pokedetails from "../src/compenents/pokedetails";
+import Pokedetails from "./compenents/pokedetails";
+// import PokemonList from './pages/pokemonsListPage'
 
 import "./App.css";
 import "./styles/custom.css";
@@ -15,8 +16,8 @@ function App() {
     <div>
       <Header />
       <Route exact path='/' name='PokeWiki' component={HomePage} />
-      <Route exact path='/pokemon/:id' name='Pokemon Details' component={Pokedetails} />
-      {/* <Route path='/pokemons' name='Pokemon Details' component={Pokedetails} /> */}
+      <Route exact path='/pokewiki/:name' name='Pokemon Details' component={Pokedetails} />
+      {/* <Route path='/pokewiki/type/:name' name='Pokemons' component={PokemonList} /> */}
       <Footer />
     </div>
   );
