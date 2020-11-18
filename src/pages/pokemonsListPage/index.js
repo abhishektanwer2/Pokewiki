@@ -2,34 +2,41 @@ import React, { useEffect, useState } from 'react'
 import { Card, Col, Row } from 'reactstrap'
 import { Link } from "react-router-dom"
 
+import Loader from '../../compenents/loader'
+import SomethingWentWrongComponent from '../../compenents/somethingWentWrong'
+
 import apiInstance from '../../api'
 
 const PokemonList = (props) => {
-  const [pokemons, setPokemonsData] = useState([])
+  const [pokemonsData, setPokemonsData] = useState([])
   const [pokemonsType, setPokemonsType] = useState('')
+  const [pokemonsDataLoading, setPokemonsDataLoading] = useState(false)
 
   const getPokemonsData = () => {
+    setPokemonsDataLoading(true)
     const { match } = props
     apiInstance.get(`/type/${match.params.name}/`).then((data) => {
       setPokemonsType(data.data.name)
       setPokemonsData(data.data.pokemon)
-    })
+    }).finally(() => setPokemonsDataLoading(false))
   }
 
   useEffect(() => {
     getPokemonsData()
   }, [])
 
+  const LoaderComponent = () => <div><Loader /></div>
+
   const IMAGE_URL = process.env.IMAGE_URL
   return <div>
     {
-      pokemons.length ? <div>
+      pokemonsDataLoading ? <LoaderComponent /> : pokemonsData.length ? <div>
         <div className='text-center py-3'>
           <h2 className='text-capitalize'>{pokemonsType} Pokemons</h2>
         </div>
         <Row className='px-3'>
           {
-            pokemons.map((pokemon, index) => {
+            pokemonsData.map((pokemon, index) => {
               const { url } = pokemon.pokemon;
               const id = url.split("/")[url.split("/").length - 2]
               const name = pokemon.pokemon.name
@@ -44,9 +51,7 @@ const PokemonList = (props) => {
             })
           }
         </Row>
-      </div> : <div>
-          <p>Something went wrong...</p>
-        </div>
+      </div> : <SomethingWentWrongComponent />
     }
   </div>
 

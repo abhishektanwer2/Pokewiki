@@ -4,20 +4,29 @@ import apiInstance from '../../api'
 
 import Banner from '../../compenents/banner'
 import HorizontalCards from '../../compenents/horizontalCards'
+import Loader from '../../compenents/loader'
+import SomethingWentWrongComponent from '../../compenents/somethingWentWrong'
 
 function HomePage(props) {
 
-  const [pokemons, setPokemonsData] = useState([])
+  const [waterPokemonLoading, setWaterPokemonLoading] = useState(false)
+  const [firePokemonLoading, setFirePokemonLoading] = useState(false)
   const [waterPokemons, setWaterPokemonsData] = useState([])
   const [firePokemons, setFirePokemonsData] = useState([])
 
   const getWaterPokemonsData = () => {
+    setWaterPokemonLoading(true)
     apiInstance.get('/type/water')
-      .then((res) => setWaterPokemonsData(res.data.pokemon))
+      .then((res) => {
+        setWaterPokemonsData(res.data.pokemon)
+      }).finally(() => setWaterPokemonLoading(false))
   }
   const getFirePokemonsData = () => {
+    setFirePokemonLoading(true)
     apiInstance.get('/type/fire')
-      .then((res) => setFirePokemonsData(res.data.pokemon))
+      .then((res) => {
+        setFirePokemonsData(res.data.pokemon)
+      }).finally(() => setFirePokemonLoading(false))
   }
 
   useEffect(() => {
@@ -25,30 +34,28 @@ function HomePage(props) {
     getFirePokemonsData()
   }, [])
 
+  const LoaderComponent = () => <div><Loader /></div>
+
   return <div>
     <Banner />
-    {
-      (waterPokemons || firePokemons) ? <div>
+    <div>
+      <div className='m-3'>
+        <h3>Water Pokemons</h3>
         {
-          waterPokemons && <div className='m-3'>
-            <h3>Water Pokemons</h3>
-            <div>
-              <HorizontalCards pokemons={waterPokemons.slice(0, 8)} />
-            </div>
-          </div>
+          waterPokemonLoading ? <LoaderComponent /> : waterPokemons.length ? <div>
+            <HorizontalCards pokemons={waterPokemons.slice(0, 8)} />
+          </div> : <SomethingWentWrongComponent />
         }
+      </div>
+      <div className='m-3'>
+        <h3>Fire Pokemons</h3>
         {
-          firePokemons && <div className='m-3'>
-            <h3>Fire Pokemons</h3>
-            <div>
-              <HorizontalCards pokemons={firePokemons.slice(0, 8)} />
-            </div>
-          </div>
+          firePokemonLoading ? <LoaderComponent /> : firePokemons.length ? <div>
+            <HorizontalCards pokemons={firePokemons.slice(0, 8)} />
+          </div> : <SomethingWentWrongComponent />
         }
-      </div> : <div>
-          <p>Something went wrong...</p>
-        </div>
-    }
+      </div>
+    </div>
   </div>
 }
 
