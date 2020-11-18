@@ -6,11 +6,11 @@
   overflow-y: hidden;
 }
 .cardsContainer::-webkit-scrollbar {
-  width: 0.5em;
+  /* width: 0.5em; */
 }
 
 .cardsContainer::-webkit-scrollbar-track {
-  box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+  /* box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3); */
 }
 
 .cardsContainer::-webkit-scrollbar-thumb {
@@ -19,8 +19,8 @@
 }
 
 .pokemonCard {
-  min-width: 50px;
-  margin: 5px;
+  min-width: 250px;
+  margin-right: 24px;
   transition: transform 0.5s ease;
 }
 .pokemonCard:hover {
