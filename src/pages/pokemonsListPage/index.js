@@ -10,7 +10,7 @@ import apiInstance from '../../api'
 const PokemonList = (props) => {
   const [pokemonsData, setPokemonsData] = useState([])
   const [pokemonsType, setPokemonsType] = useState('')
-  const [pokemonsDataLoading, setPokemonsDataLoading] = useState(false)
+  const [pokemonsDataLoading, setPokemonsDataLoading] = useState(true)
 
   const getPokemonsData = () => {
     setPokemonsDataLoading(true)

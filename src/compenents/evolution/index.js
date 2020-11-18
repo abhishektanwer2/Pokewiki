@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Row, Col, Card } from "reactstrap";
+import { Row, Col, CardBody } from "reactstrap";
 import { Link } from "react-router-dom";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faArrowRight } from '@fortawesome/free-solid-svg-icons'
@@ -24,7 +24,7 @@ const Evolve = (props) => {
 
   const IMAGE_URL = process.env.IMAGE_URL;
   return (
-    <Card className='box'>
+    <CardBody>
       {evolutionChainData.chain &&
         <Row>
           <Col sm='4' className='text-center'>
@@ -87,7 +87,7 @@ const Evolve = (props) => {
           }
         </Row>
       }
-    </Card>
+    </CardBody>
   );
 };
 

@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Row, Col, Card } from "reactstrap";
+import { Row, Col, Card, CardHeader, CardBody } from "reactstrap";
 
 import apiInstance from '../../api'
 import PokeDetailsCard from '../../compenents/pokeDetailsCard'
@@ -15,14 +15,19 @@ const Pokedetails = (props) => {
 
   const [pokemonData, setPokemonData] = useState({})
   const [pokemonSpeciesData, setpokemonSpeciesData] = useState({})
+  const [similarPokemonsData, setSimilarPokemonsData] = useState([])
   const [pokemonDataLoading, setPokemonDataLoading] = useState(true)
   const [pokemonSpeciesDataLoading, setPokemonSpeciesDataLoading] = useState(true)
+  const [similarPokemonsDataLoading, setSimilarPokemonsDataLoading] = useState(true)
 
   const getPokemonData = () => {
     setPokemonDataLoading(true)
     const { match } = props
     const name = match.params.name
-    apiInstance.get(`/pokemon/${name}/`).then((data) => setPokemonData(data.data)).finally(() => setPokemonDataLoading(false))
+    apiInstance.get(`/pokemon/${name}/`).then((data) => {
+      setPokemonData(data.data)
+      getSimilarPokemonsData(data.data.types[0].type.name)
+    }).finally(() => setPokemonDataLoading(false))
   }
 
   const getpokemonSpeciesData = () => {
@@ -30,6 +35,11 @@ const Pokedetails = (props) => {
     const { match } = props
     const name = match.params.name
     apiInstance.get(`/pokemon-species/${name}/`).then((data) => setpokemonSpeciesData(data.data)).finally(() => setPokemonSpeciesDataLoading(false))
+  }
+
+  const getSimilarPokemonsData = (type) => {
+    setSimilarPokemonsDataLoading(true)
+    apiInstance.get(`/type/${type}`).then((data) => setSimilarPokemonsData(data.data.pokemon)).finally(() => setSimilarPokemonsDataLoading(false))
   }
 
   useEffect(() => {
@@ -47,14 +57,11 @@ const Pokedetails = (props) => {
             pokemonData={pokemonData} pokemonSpeciesData={pokemonSpeciesData} /> : <SomethingWentWrongComponent />
         }
       </Card>
-      <br />
-      <Row>
+      <Row className='mt-3'>
         <Col md="6" sm="12">
-          <Card className="card shadow mb-4">
-            <div className="card-header py-3">
-              <h6 className="text-primary font-weight-bold m-0">Moves</h6>
-            </div>
-            <div className="card-body">
+          <Card className="shadow">
+            <CardHeader className="font-weight-bold">Moves</CardHeader>
+            <CardBody>
               {/* {
                 pokemonData.moves && pokemonData.moves.slice(0,8).map((move, index) => <div key={index}>
                   <h4 className="small font-weight-bold">
@@ -63,36 +70,46 @@ const Pokedetails = (props) => {
                   <Progressbar stats={stats} />
                 </div>)
               } */}
-            </div>
+            </CardBody>
           </Card>
         </Col>
-        {
-          pokemonDataLoading ? <LoaderComponent /> : pokemonData.stats ? <Col md="6" sm="12">
-            <Card className="card shadow mb-4">
-              <div className="card-header py-3">
-                <h6 className="text-primary font-weight-bold m-0">Stats</h6>
-              </div>
-              <div className="card-body">
-                {
-                  pokemonData.stats && pokemonData.stats.sort((a, b) => a.base_stat > b.base_stat ? 1 : -1).map((stat, index) => <div key={index}>
-                    <h4 className="small font-weight-bold">
-                      {stat.stat.name}<span className="float-right">{`${stat.base_stat}`}</span>
-                    </h4>
-                    <Statsbar stat={stat} />
-                  </div>)
-                }
-              </div>
-            </Card>
-          </Col> : <SomethingWentWrongComponent />
-        }
+        <Col md="6" sm="12">
+          <Card className="shadow">
+            <CardHeader className="font-weight-bold">Stats</CardHeader>
+            <CardBody>
+              {
+                pokemonDataLoading ? <LoaderComponent /> : pokemonData.stats ? pokemonData.stats.sort((a, b) => a.base_stat > b.base_stat ? 1 : -1).map((stat, index) => <div key={index}>
+                  <h4 className="small font-weight-bold">
+                    {stat.stat.name}<span className="float-right">{`${stat.base_stat}`}</span>
+                  </h4>
+                  <Statsbar stat={stat} />
+                </div>) : <SomethingWentWrongComponent />
+              }
+            </CardBody>
+          </Card>
+        </Col>
       </Row>
-      <br></br>
-      <h4>Evolutions</h4>
+      <div className='mt-3'>
+        <Card className='shadow'>
+          <CardHeader className='font-weight-bold'>Evolutions</CardHeader>
+          {
+            pokemonSpeciesDataLoading ? <LoaderComponent /> : pokemonSpeciesData.evolution_chain ?
+              <Evolution url={pokemonSpeciesData.evolution_chain.url} /> : <SomethingWentWrongComponent />
+          }
+        </Card>
+      </div>
       {
-        pokemonSpeciesDataLoading ? <LoaderComponent /> : pokemonSpeciesData.evolution_chain ?
-          <Evolution url={pokemonSpeciesData.evolution_chain.url} /> : <SomethingWentWrongComponent />
+        pokemonData.types ? <div className='mt-3'>
+          <Card className='shadow'>
+            <CardHeader className='font-weight-bold'>Similar Pokemons</CardHeader>
+            {
+              similarPokemonsDataLoading ? <LoaderComponent /> : similarPokemonsData.length ? <CardBody>
+                <HorizontalCards pokemons={similarPokemonsData.slice(0, 8)} />
+              </CardBody> : <SomethingWentWrongComponent />
+            }
+          </Card>
+        </div> : null
       }
-      <p>Similiar pokemon</p>
     </div>
   );
 };

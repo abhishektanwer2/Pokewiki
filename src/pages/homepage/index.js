@@ -9,10 +9,10 @@ import SomethingWentWrongComponent from '../../compenents/somethingWentWrong'
 
 function HomePage(props) {
 
-  const [waterPokemonLoading, setWaterPokemonLoading] = useState(false)
-  const [firePokemonLoading, setFirePokemonLoading] = useState(false)
   const [waterPokemons, setWaterPokemonsData] = useState([])
   const [firePokemons, setFirePokemonsData] = useState([])
+  const [waterPokemonLoading, setWaterPokemonLoading] = useState(true)
+  const [firePokemonLoading, setFirePokemonLoading] = useState(true)
 
   const getWaterPokemonsData = () => {
     setWaterPokemonLoading(true)
