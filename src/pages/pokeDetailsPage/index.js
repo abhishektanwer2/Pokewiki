@@ -27,13 +27,12 @@ const Pokedetails = (props) => {
     apiInstance.get(`/pokemon/${name}/`).then((data) => {
       setPokemonData(data.data)
       getSimilarPokemonsData(data.data.types[0].type.name)
+      getpokemonSpeciesData(data.data.species.name)
     }).finally(() => setPokemonDataLoading(false))
   }
 
-  const getpokemonSpeciesData = () => {
+  const getpokemonSpeciesData = (name) => {
     setPokemonSpeciesDataLoading(true)
-    const { match } = props
-    const name = match.params.name
     apiInstance.get(`/pokemon-species/${name}/`).then((data) => setpokemonSpeciesData(data.data)).finally(() => setPokemonSpeciesDataLoading(false))
   }
 
@@ -44,7 +43,6 @@ const Pokedetails = (props) => {
 
   useEffect(() => {
     getPokemonData()
-    getpokemonSpeciesData()
   }, [props.match.params.name])
 
   const LoaderComponent = () => <div><Loader /></div>
@@ -103,7 +101,7 @@ const Pokedetails = (props) => {
           <Card className='shadow'>
             <CardHeader className='font-weight-bold'>Similar Pokemons</CardHeader>
             {
-              similarPokemonsDataLoading ? <LoaderComponent /> : similarPokemonsData.length ? <CardBody>
+              similarPokemonsDataLoading ? <LoaderComponent /> : similarPokemonsData.length ? <CardBody className='p-2'>
                 <HorizontalCards pokemons={similarPokemonsData.slice(0, 8)} />
               </CardBody> : <SomethingWentWrongComponent />
             }
