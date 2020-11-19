@@ -46,7 +46,7 @@ const Evolve = (props) => {
             </div>
           </Col>
           {
-            evolutionChainData.chain.evolves_to.length && <Col sm='4' className='text-center'>
+            evolutionChainData.chain.evolves_to.length ? <Col sm='4' className='text-center'>
               <div className='d-flex flex-row'>
                 <div>
                   <Link to={`/pokewiki/${evolutionChainData.chain.evolves_to[0].species.name}`}>
@@ -63,10 +63,12 @@ const Evolve = (props) => {
                   <FontAwesomeIcon icon={faArrowRight} size="3x" style={evolutionChainData.chain.evolves_to[0].evolves_to.length ? {} : { visibility: 'hidden' }} />
                 </div>
               </div>
-            </Col>
+            </Col> : <Col>
+                <p>This pokemon does not evolve.</p>
+              </Col>
           }
           {
-            evolutionChainData.chain.evolves_to[0].evolves_to.length ? <Col sm='4' className='text-center'>
+            (evolutionChainData.chain.evolves_to.length && evolutionChainData.chain.evolves_to[0].evolves_to.length) ? <Col sm='4' className='text-center'>
               <div className='d-flex flex-row'>
                 <div>
                   <Link to={`/pokewiki/${evolutionChainData.chain.evolves_to[0].evolves_to[0].species.name}`}>
