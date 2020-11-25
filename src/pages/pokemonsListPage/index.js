@@ -23,7 +23,7 @@ const PokemonList = (props) => {
 
   useEffect(() => {
     getPokemonsData()
-  }, [])
+  }, [props.match.params.name])
 
   const LoaderComponent = () => <div><Loader /></div>
 

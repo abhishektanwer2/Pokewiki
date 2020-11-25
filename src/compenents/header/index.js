@@ -15,6 +15,7 @@ import {
   Input,
   Button,
 } from "reactstrap";
+import MyComponent from '../Searchbar';
 import { Link } from 'react-router-dom';
 
 const Header = (props) => {
@@ -63,12 +64,9 @@ const Header = (props) => {
             </Nav>
           </div>
           <div>
-            <InputGroup>
-              <Input></Input>
-              <Button href="#" className="ml-2">
-                Search
-              </Button>
-            </InputGroup>
+            <MyComponent />
+
+
           </div>
         </div>
       </Collapse>

@@ -10,7 +10,7 @@ import {
 import './banner.css'
 let randompokemon = () => {
   const number = Math.floor(Math.random() * 1000);
-  return number
+  return number;
 }
 
 const items = [
