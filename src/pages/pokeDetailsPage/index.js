@@ -1,13 +1,13 @@
 import React, { useState, useEffect } from "react";
 import { Row, Col, Card, CardHeader, CardBody } from "reactstrap";
 
-import apiInstance from '../../api'
-import PokeDetailsCard from '../../compenents/pokeDetailsCard'
-import Statsbar from '../../compenents/statsbar'
+import apiInstance from '../../api';
+import PokeDetailsCard from '../../compenents/pokeDetailsCard';
+import Statsbar from '../../compenents/statsbar';
 import Evolution from "../../compenents/evolution";
 import HorizontalCards from "../../compenents/horizontalCards";
 import Loader from '../../compenents/loader'
-import SomethingWentWrongComponent from '../../compenents/somethingWentWrong'
+import SomethingWentWrongComponent from '../../compenents/somethingWentWrong';
 
 import "../../styles/custom.css";
 
@@ -25,20 +25,20 @@ const Pokedetails = (props) => {
     const { match } = props
     const name = match.params.name
     apiInstance.get(`/pokemon/${name}/`).then((data) => {
-      setPokemonData(data.data)
-      getSimilarPokemonsData(data.data.types[0].type.name)
-      getpokemonSpeciesData(data.data.species.name)
-    }).finally(() => setPokemonDataLoading(false))
+      setPokemonData(data.data);
+      getSimilarPokemonsData(data.data.types[0].type.name);
+      getpokemonSpeciesData(data.data.species.name);
+    }).finally(() => setPokemonDataLoading(false));
   }
 
   const getpokemonSpeciesData = (name) => {
-    setPokemonSpeciesDataLoading(true)
-    apiInstance.get(`/pokemon-species/${name}/`).then((data) => setpokemonSpeciesData(data.data)).finally(() => setPokemonSpeciesDataLoading(false))
+    setPokemonSpeciesDataLoading(true);
+    apiInstance.get(`/pokemon-species/${name}/`).then((data) => setpokemonSpeciesData(data.data)).finally(() => setPokemonSpeciesDataLoading(false));
   }
 
   const getSimilarPokemonsData = (type) => {
     setSimilarPokemonsDataLoading(true)
-    apiInstance.get(`/type/${type}`).then((data) => setSimilarPokemonsData(data.data.pokemon)).finally(() => setSimilarPokemonsDataLoading(false))
+    apiInstance.get(`/type/${type}`).then((data) => setSimilarPokemonsData(data.data.pokemon)).finally(() => setSimilarPokemonsDataLoading(false));
   }
 
   useEffect(() => {

@@ -8,22 +8,23 @@ import {
 } from "reactstrap";
 
 import './banner.css'
+let randompokemon = () => {
+  const number = Math.floor(Math.random() * 1000);
+  return number
+}
 
 const items = [
   {
-    src: `${process.env.IMAGE_URL}/25.png`,
-    altText: "",
-    caption: "",
+    src: `${process.env.IMAGE_URL}/` + randompokemon() + '.png',
+
   },
   {
-    src: `${process.env.IMAGE_URL}/4.png`,
-    altText: "",
-    caption: "",
+    src: `${process.env.IMAGE_URL}/` + randompokemon() + '.png',
+
   },
   {
-    src: `${process.env.IMAGE_URL}/1.png`,
-    altText: "",
-    caption: "",
+    src: `${process.env.IMAGE_URL}/` + randompokemon() + '.png',
+
   },
 ];
 

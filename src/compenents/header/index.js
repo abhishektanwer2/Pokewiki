@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import {
   Collapse,
   Navbar,
@@ -15,13 +15,20 @@ import {
   Input,
   Button,
 } from "reactstrap";
+import { Link } from 'react-router-dom';
 
 const Header = (props) => {
-
   const [isOpen, setIsOpen] = useState(false);
 
   const toggle = () => setIsOpen(!isOpen);
+  const [pokemontype, settype] = useState("");
+  useEffect(() => {
+    console.log(pokemontype);
+    function handleStatusChange(status) {
+      settype("water");
+    }
 
+  });
   return (
     <Navbar color="light" light expand="md">
       <NavbarBrand>
@@ -33,23 +40,24 @@ const Header = (props) => {
       </NavbarBrand>
       <NavbarToggler onClick={toggle} />
       <Collapse isOpen={isOpen} navbar>
-        <div className='d-flex justify-content-between w-100'>
+        <div className="d-flex justify-content-between w-100">
           <div>
             <Nav navbar>
               <NavItem>
                 <NavLink href="/">PokeWiki</NavLink>
               </NavItem>
-              <NavItem>
-                <NavLink href="#">Pokemon</NavLink>
-              </NavItem>
               <UncontrolledDropdown nav inNavbar>
                 <DropdownToggle nav caret>
                   Pokemon Type
-              </DropdownToggle>
+                </DropdownToggle>
                 <DropdownMenu right>
-                  <DropdownItem>Water</DropdownItem>
-                  <DropdownItem>Fire</DropdownItem>
-                  <DropdownItem>Air</DropdownItem>
+
+                  <Link to={'/pokewiki/type/water'}><DropdownItem>Water</DropdownItem></Link>
+                  <Link to={'/pokewiki/type/fire'} ><DropdownItem>Fire</DropdownItem></Link>
+                  <Link to={'/pokewiki/type/grass'}  ><DropdownItem>Grass</DropdownItem></Link>
+                  <Link to={'/pokewiki/type/electric'}><DropdownItem>Electric</DropdownItem></Link>
+                  <Link to={'/pokewiki/type/dragon'}><DropdownItem>Dragon</DropdownItem></Link>
+
                 </DropdownMenu>
               </UncontrolledDropdown>
             </Nav>
@@ -59,12 +67,12 @@ const Header = (props) => {
               <Input></Input>
               <Button href="#" className="ml-2">
                 Search
-            </Button>
+              </Button>
             </InputGroup>
           </div>
         </div>
       </Collapse>
-    </Navbar>
+    </Navbar >
   );
 };
 
