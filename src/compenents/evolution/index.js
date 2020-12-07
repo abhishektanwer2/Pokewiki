@@ -31,10 +31,12 @@ const Evolve = (props) => {
             <div className='d-flex flex-row'>
               <div className='h-100'>
                 <Link to={`/pokewiki/${evolutionChainData.chain.species.name}`}>
-                  <img
-                    src={IMAGE_URL + evolutionChainData.chain.species.url.split("/")[evolutionChainData.chain.species.url.split("/").length - 2] + ".png"}
-                    className="rounded-circle w-50 bg-secondary mx-auto p-3"
-                  />
+                  <div>
+                    <img
+                      src={IMAGE_URL + evolutionChainData.chain.species.url.split("/")[evolutionChainData.chain.species.url.split("/").length - 2] + ".png"}
+                      className="rounded-circle w-50 bg-secondary mx-auto p-3"
+                    />
+                  </div>
                   <div className='mt-3'>
                     <h4>{evolutionChainData.chain.species.name}</h4>
                   </div>
@@ -50,10 +52,12 @@ const Evolve = (props) => {
               <div className='d-flex flex-row'>
                 <div>
                   <Link to={`/pokewiki/${evolutionChainData.chain.evolves_to[0].species.name}`}>
-                    <img
-                      src={IMAGE_URL + evolutionChainData.chain.evolves_to[0].species.url.split("/")[evolutionChainData.chain.evolves_to[0].species.url.split("/").length - 2] + ".png"}
-                      className="rounded-circle w-50 bg-secondary mx-auto p-3"
-                    />
+                    <div>
+                      <img
+                        src={IMAGE_URL + evolutionChainData.chain.evolves_to[0].species.url.split("/")[evolutionChainData.chain.evolves_to[0].species.url.split("/").length - 2] + ".png"}
+                        className="rounded-circle w-50 bg-secondary mx-auto p-3"
+                      />
+                    </div>
                     <div className='mt-3'>
                       <h4>{evolutionChainData.chain.evolves_to[0].species.name}</h4>
                     </div>
@@ -72,10 +76,12 @@ const Evolve = (props) => {
               <div className='d-flex flex-row'>
                 <div>
                   <Link to={`/pokewiki/${evolutionChainData.chain.evolves_to[0].evolves_to[0].species.name}`}>
-                    <img
-                      src={IMAGE_URL + evolutionChainData.chain.evolves_to[0].evolves_to[0].species.url.split("/")[evolutionChainData.chain.evolves_to[0].evolves_to[0].species.url.split("/").length - 2] + ".png"}
-                      className="rounded-circle w-50 bg-secondary mx-auto p-3"
-                    />
+                    <div>
+                      <img
+                        src={IMAGE_URL + evolutionChainData.chain.evolves_to[0].evolves_to[0].species.url.split("/")[evolutionChainData.chain.evolves_to[0].evolves_to[0].species.url.split("/").length - 2] + ".png"}
+                        className="rounded-circle w-50 bg-secondary mx-auto p-3"
+                      />
+                    </div>
                     <div className='mt-3'>
                       <h4>{evolutionChainData.chain.evolves_to[0].evolves_to[0].species.name}</h4>
                     </div>

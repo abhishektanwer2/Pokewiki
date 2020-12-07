@@ -43,8 +43,12 @@ const PokemonList = (props) => {
               return <Col md={3} sm={12} key={index} className='mb-3'>
                 <Card className="box shadow text-center">
                   <Link to={`/pokewiki/${name}`}>
-                    <img src={IMAGE_URL + id + ".png"} className="w-100" />
-                    <h4 className='mt-3'>{pokemon.pokemon.name}</h4>
+                    <div>
+                      <img src={IMAGE_URL + id + ".png"} className="w-100" />
+                    </div>
+                    <div>
+                      <h4 className='mt-3'>{pokemon.pokemon.name}</h4>
+                    </div>
                   </Link>
                 </Card>
               </Col>

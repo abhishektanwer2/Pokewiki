@@ -23,13 +23,6 @@ const Header = (props) => {
 
   const toggle = () => setIsOpen(!isOpen);
   const [pokemontype, settype] = useState("");
-  useEffect(() => {
-    console.log(pokemontype);
-    function handleStatusChange(status) {
-      settype("water");
-    }
-
-  });
   return (
     <Navbar color="light" light expand="md">
       <NavbarBrand>
