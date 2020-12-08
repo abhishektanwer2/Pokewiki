@@ -15,11 +15,6 @@ module.exports = merge(common, {
     historyApiFallback: true,
     disableHostCheck: true,
   },
-  output: {
-    path: path.join(__dirname, "dist"),
-    publicPath: "/",
-    filename: "app.[hash].js",
-  },
   plugins: [
     new webpack.HotModuleReplacementPlugin(),
     new Dotenv({
