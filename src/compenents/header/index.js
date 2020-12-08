@@ -10,19 +10,29 @@ import {
   UncontrolledDropdown,
   DropdownToggle,
   DropdownMenu,
-  DropdownItem,
-  InputGroup,
-  Input,
-  Button,
+  DropdownItem
 } from "reactstrap";
-import MyComponent from '../Searchbar';
 import { Link } from 'react-router-dom';
+
+import apiInstance from '../../api'
+import SearchBarComponent from '../Searchbar';
 
 const Header = (props) => {
   const [isOpen, setIsOpen] = useState(false);
+  const [pokemons, setPokemonsData] = useState([])
+  const [pokemontype, settype] = useState("");
 
   const toggle = () => setIsOpen(!isOpen);
-  const [pokemontype, settype] = useState("");
+
+  const getPokemonsData = () => {
+    apiInstance.get('/pokemon?limit=1200')
+      .then((res) => setPokemonsData(res.data.results))
+  }
+
+  useEffect(() => {
+    getPokemonsData()
+  }, [])
+
   return (
     <Navbar color="light" light expand="md">
       <NavbarBrand>
@@ -57,13 +67,11 @@ const Header = (props) => {
             </Nav>
           </div>
           <div>
-            <MyComponent />
-
-
+            <SearchBarComponent pokemons={pokemons} history={props.history} />
           </div>
         </div>
       </Collapse>
-    </Navbar >
+    </Navbar>
   );
 };
 

@@ -1,13 +1,28 @@
-
-import React from 'react';
-import Select from 'react-select';
+import React, { useState } from 'react';
+import AsyncSelect from 'react-select/async';
 import "./style.css";
 
-let options = [
-    { value: 'chocolate', label: 'Chocolate' },
-    { value: 'strawberry', label: 'Strawberry' },
-    { value: 'vanilla', label: 'Vanilla' }
-]
+const SearchBar = (props) => {
+    const [selectedValue, setSelectedValue] = useState(null);
 
-const MyComponent = () => (<Select options={options} className={"Searchbar"}></Select>);
-export default MyComponent;
+    const filterPokemons = (inputValue) => {
+        const { pokemons } = props
+        return pokemons.filter(pokemon => pokemon.name.toLowerCase().includes(inputValue.toLowerCase()));
+    }
+    const loadOptions = (inputValue, callback) => {
+        callback(filterPokemons(inputValue));
+    }
+    const handleChange = (value) => {
+        setSelectedValue(null)
+        props.history.push(`/pokewiki/${value.name}`)
+    }
+
+    return <AsyncSelect className={"searchbar"} cacheOptions loadOptions={loadOptions}
+        getOptionLabel={e => e.name}
+        getOptionValue={e => e.name}
+        onChange={handleChange}
+        value={selectedValue}
+    />
+};
+
+export default SearchBar;
