@@ -22,7 +22,7 @@ const Evolve = (props) => {
     getEvolutionChainData()
   }, [])
 
-  const IMAGE_URL = process.env.IMAGE_URL;
+  const IMAGE_URL = process.env.REACT_APP_IMAGE_URL;
   return (
     <CardBody>
       {evolutionChainData.chain &&

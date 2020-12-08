@@ -42,7 +42,7 @@ const Banner = (props) => {
             randomPokeData.map((pokemon, index) => <div key={index}>
               <Link to={`/pokewiki/${pokemon.name}`}>
                 <div>
-                  <img src={`${process.env.IMAGE_URL}/` + pokemon.id + '.png'} alt={pokemon.name} />
+                  <img src={`${process.env.REACT_APP_IMAGE_URL}/` + pokemon.id + '.png'} alt={pokemon.name} />
                 </div>
               </Link>
             </div>)

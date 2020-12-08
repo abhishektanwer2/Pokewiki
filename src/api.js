@@ -1,7 +1,7 @@
 import axios from "axios";
 
 const instance = axios.create({
-  baseURL: process.env.URL,
+  baseURL: process.env.REACT_APP_URL,
   timeout: 10000,
   headers: {
     "Access-Control-Allow-Methods": "GET, PUT, POST, DELETE, OPTIONS",

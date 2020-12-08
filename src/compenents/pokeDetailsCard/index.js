@@ -5,7 +5,7 @@ import { Link } from "react-router-dom"
 const PokeDetailsCard = (props) => {
   const { pokemonData, pokemonSpeciesData } = props
 
-  const IMAGE_URL = process.env.IMAGE_URL
+  const IMAGE_URL = process.env.REACT_APP_IMAGE_URL
   const colorBasedOnType = { water: 'info', fire: 'warning', bug: 'success', flying: 'dark', poison: 'primary', normal: 'secondary' }
   return <Row>
     <Col md={{ size: 4, offset: 1 }} sm={12} className='text-center'>
