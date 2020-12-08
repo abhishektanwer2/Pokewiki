@@ -8,6 +8,11 @@ const common = require('./webpack.common.js')
 module.exports = merge(common, {
   mode: 'production',
   devtool: false,
+  output: {
+    path: path.resolve(__dirname, '../dist'),
+    publicPath: '/',
+    filename: 'js/[name].[contenthash].bundle.js',
+  },
   plugins: [
     new MiniCssExtractPlugin({
       filename: 'styles/[name].[contenthash].css',
