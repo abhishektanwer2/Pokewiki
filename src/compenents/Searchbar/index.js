@@ -17,7 +17,9 @@ const SearchBar = (props) => {
         props.history.push(`/pokewiki/${value.name}`)
     }
 
-    return <AsyncSelect className={"searchbar"} cacheOptions loadOptions={loadOptions}
+    return <AsyncSelect className={"searchbar"} cacheOptions
+        placeholder='Type to search pokemon...'
+        loadOptions={loadOptions}
         getOptionLabel={e => e.name}
         getOptionValue={e => e.name}
         onChange={handleChange}
