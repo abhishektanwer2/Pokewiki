@@ -37,7 +37,7 @@ const Banner = (props) => {
   if (randomPokeData.length) {
     return (
       <div className='bannerContainer'>
-        <Carousel className="text-center">
+        <Carousel className="text-center" showThumbs={false}>
           {
             randomPokeData.map((pokemon, index) => <div key={index}>
               <Link to={`/pokewiki/${pokemon.name}`}>

@@ -24,6 +24,7 @@ function HomePage(props) {
 
   const getWaterPokemonsData = () => {
     setWaterPokemonLoading(true)
+    console.log('env- ', process.env.REACT_APP_URL)
     apiInstance.get('/type/water')
       .then((res) => {
         setWaterPokemonsData(res.data.pokemon)
