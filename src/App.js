@@ -16,8 +16,8 @@ function App(props) {
     <div>
       <Header history={props.history} />
       <Route exact path='/' name='PokeWiki' component={HomePage} />
-      {/* <Route exact path='/pokewiki/:name' name='Pokemon Details' component={Pokedetails} />
-      <Route exact path='/pokewiki/type/:name' name='Pokemons' component={PokemonList} /> */}
+      <Route exact path='/pokewiki/:name' name='Pokemon Details' component={Pokedetails} />
+      <Route exact path='/pokewiki/type/:name' name='Pokemons' component={PokemonList} />
       <Footer />
     </div>
   );
