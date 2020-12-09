@@ -1,6 +1,7 @@
 const webpack = require('webpack');
 const path = require("path");
 const HtmlWebPackPlugin = require('html-webpack-plugin')
+const { CleanWebpackPlugin } = require('clean-webpack-plugin')
 
 module.exports = {
   entry: ["./src/index"],
@@ -11,15 +12,7 @@ module.exports = {
   },
   module: {
     rules: [
-      {
-        test: /\.(js|jsx)$/,
-        exclude: /node_modules/,
-        loader: "babel-loader",
-        options: {
-          presets: ["@babel/preset-env", "@babel/preset-react"],
-          plugins: ["react-hot-loader/babel"],
-        },
-      },
+      { test: /\.js$/, exclude: /node_modules/, use: ['babel-loader'] },
       {
         test: /\.(scss|css)$/,
         use: [
@@ -40,6 +33,7 @@ module.exports = {
     ],
   },
   plugins: [
+    new CleanWebpackPlugin(),
     new webpack.ProgressPlugin(),
     new HtmlWebPackPlugin({
       template: "./index.html",
