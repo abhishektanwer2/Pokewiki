@@ -1,9 +1,8 @@
 import React, { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
 import { Button, Card, CardBody, CardHeader } from 'reactstrap'
-import axios from 'axios'
 
-// import apiInstance from '../../api'
+import apiInstance from '../../api'
 
 import Banner from '../../compenents/banner'
 import HorizontalCards from '../../compenents/horizontalCards'
@@ -61,10 +60,10 @@ function HomePage(props) {
 
   useEffect(() => {
     getWaterPokemonsData()
-    // getFirePokemonsData()
-    // getGrassPokemonsData()
-    // getElectricPokemonsData()
-    // getDragonPokemonsData()
+    getFirePokemonsData()
+    getGrassPokemonsData()
+    getElectricPokemonsData()
+    getDragonPokemonsData()
   }, [])
 
   const LoaderComponent = () => <div><Loader /></div>
@@ -82,13 +81,13 @@ function HomePage(props) {
   </Card>
 
   return <div>
-    {/* <Banner /> */}
+    <Banner />
     <div className='p-3'>
       <RenderPokemonsByType type='water' color='info' pokemons={waterPokemons} loading={waterPokemonLoading} index={0} />
-      {/* <RenderPokemonsByType type='fire' color='warning' pokemons={firePokemons} loading={firePokemonLoading} index={1} />
+      <RenderPokemonsByType type='fire' color='warning' pokemons={firePokemons} loading={firePokemonLoading} index={1} />
       <RenderPokemonsByType type='grass' color='success' pokemons={grassPokemons} loading={grassPokemonsLoading} index={2} />
       <RenderPokemonsByType type='electric' color='dark' pokemons={electricPokemons} loading={electricPokemonsLoading} index={3} />
-      <RenderPokemonsByType type='dragon' color='danger' pokemons={dragonPokemons} loading={dragonPokemonsLoading} index={4} /> */}
+      <RenderPokemonsByType type='dragon' color='danger' pokemons={dragonPokemons} loading={dragonPokemonsLoading} index={4} />
     </div>
   </div>
 }
