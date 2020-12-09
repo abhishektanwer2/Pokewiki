@@ -1,3 +1,0 @@
-[context.production.environment]
-  REACT_APP_URL = "From netlify.toml (REACT_APP_)"
-  REACT_APP_IMAGE_URL = "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/"
