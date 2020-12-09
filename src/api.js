@@ -5,8 +5,8 @@ const instance = axios.create({
   timeout: 10000,
   headers: {
     "Access-Control-Allow-Methods": "GET, PUT, POST, DELETE, OPTIONS",
-    "X-Custom-Header": "foobar",
-  },
+    "X-Custom-Header": "foobar"
+  }
 });
 
 export default instance;
