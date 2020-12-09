@@ -16,7 +16,7 @@ const HorizontalCards = (props) => {
         return (
           <div key={index} className="pokemonCard">
             <Card className="box">
-              <Link to={`/pokewiki/${name}`}>
+              <Link to={`/pokewiki/${name}`} className='custom-link'>
                 <div>
                   <img src={IMAGE_URL + id + ".png"} className="w-100" />
                 </div>

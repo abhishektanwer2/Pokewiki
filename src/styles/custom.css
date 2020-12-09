@@ -10,3 +10,12 @@ html, body, #root, #root>div {
   display: block;
   padding: 1.25rem;
 }
+
+a.custom-link {
+  color: inherit !important;
+}
+
+a.custom-link:hover {
+  /* text-decoration: none !important; */
+  color: inherit !important;
+}

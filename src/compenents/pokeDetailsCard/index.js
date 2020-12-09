@@ -20,7 +20,7 @@ const PokeDetailsCard = (props) => {
           pokemonData.types && pokemonData.types.length && <p>
             <b>Type: </b>
             {
-              pokemonData.types && pokemonData.types.map((type, index) => <Link key={index} to={`/pokewiki/type/${type.type.name}`}>
+              pokemonData.types && pokemonData.types.map((type, index) => <Link key={index} to={`/pokewiki/type/${type.type.name}`} className='custom-link'>
                 <Badge
                   color='info' className={`px-2 py-1 text-uppercase text-white ${colorBasedOnType[type.type.name] ? `bg-${colorBasedOnType[type.type.name]}` : 'bg-info'} ${(index + 1) !== pokemonData.types.length && 'mr-2'}`}>{type.type.name}
                 </Badge>

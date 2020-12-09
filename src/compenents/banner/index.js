@@ -29,7 +29,6 @@ const Banner = () => {
   }
 
   useEffect(() => {
-    console.log('banner')
     getRandomPokeNames()
   }, [])
 

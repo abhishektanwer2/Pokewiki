@@ -42,7 +42,7 @@ const PokemonList = (props) => {
               const name = pokemon.pokemon.name
               return <Col md={3} sm={12} key={index} className='mb-3'>
                 <Card className="box shadow text-center">
-                  <Link to={`/pokewiki/${name}`}>
+                  <Link to={`/pokewiki/${name}`} className='custom-link'>
                     <div>
                       <img src={IMAGE_URL + id + ".png"} className="w-100" />
                     </div>
