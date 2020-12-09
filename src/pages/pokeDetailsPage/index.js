@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { Row, Col, Card, CardHeader, CardBody } from "reactstrap";
 
-import apiInstance from '../../api';
+// import apiInstance from '../../api';
 import PokeDetailsCard from '../../compenents/pokeDetailsCard';
 import Statsbar from '../../compenents/statsbar';
 import Evolution from "../../compenents/evolution";

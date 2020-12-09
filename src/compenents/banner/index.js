@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 import { Carousel } from 'react-responsive-carousel';
 
 import Loader from '../loader'
-import apiInstance from '../../api'
+// import apiInstance from '../../api'
 
 import './banner.css'
 
@@ -29,6 +29,7 @@ const Banner = (props) => {
   }
 
   useEffect(() => {
+    console.log('banner')
     getRandomPokeNames()
   }, [])
 
@@ -42,7 +43,7 @@ const Banner = (props) => {
             randomPokeData.map((pokemon, index) => <div key={index}>
               <Link to={`/pokewiki/${pokemon.name}`}>
                 <div>
-                  <img src={`${process.env.REACT_APP_IMAGE_URL}/` + pokemon.id + '.png'} alt={pokemon.name} />
+                  <img src={`${process.env.REACT_APP_IMAGE_URL}` + pokemon.id + '.png'} alt={pokemon.name} />
                 </div>
               </Link>
             </div>)
