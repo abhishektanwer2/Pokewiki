@@ -20,11 +20,9 @@ module.exports = merge(common, {
       chunkFilename: '[id].css',
     }),
     new webpack.DefinePlugin({
-      'process.env': {
-        REACT_APP_URL: process.env.REACT_APP_URL,
-        REACT_APP_IMAGE_URL: process.env.REACT_APP_IMAGE_URL
-      }
-    }),
+      'process.env.REACT_APP_URL': process.env.REACT_APP_URL,
+      'process.env.REACT_APP_IMAGE_URL': process.env.REACT_APP_IMAGE_URL
+    })
   ],
   optimization: {
     minimize: true,
