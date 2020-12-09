@@ -21,7 +21,8 @@ module.exports = merge(common, {
     }),
     new webpack.DefinePlugin({
       'process.env': {
-        NODE_ENV: JSON.stringify('production')
+        REACT_APP_URL: process.env.REACT_APP_URL,
+        REACT_APP_IMAGE_URL: process.env.REACT_APP_IMAGE_URL
       }
     }),
   ],
