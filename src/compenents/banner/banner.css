@@ -1,10 +1,10 @@
-.bannerContainer {
-  background-color: #253146;
+.carousel .slide {
+  background-color: #253146 !important;
 }
-.carousel-item {
+.carousel-root {
   height: 300px;
 }
-.carousel-item img {
+.carousel-root img {
   height: 300px;
   width: auto !important;
 }

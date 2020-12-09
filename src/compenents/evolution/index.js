@@ -22,7 +22,7 @@ const Evolve = (props) => {
     getEvolutionChainData()
   }, [])
 
-  const IMAGE_URL = process.env.IMAGE_URL;
+  const IMAGE_URL = process.env.REACT_APP_IMAGE_URL;
   return (
     <CardBody>
       {evolutionChainData.chain &&
@@ -30,7 +30,7 @@ const Evolve = (props) => {
           <Col sm='4' className='text-center'>
             <div className='d-flex flex-row'>
               <div className='h-100'>
-                <Link to={`/pokewiki/${evolutionChainData.chain.species.name}`}>
+                <Link to={`/pokewiki/${evolutionChainData.chain.species.name}`} className='custom-link' className='custom-link'>
                   <div>
                     <img
                       src={IMAGE_URL + evolutionChainData.chain.species.url.split("/")[evolutionChainData.chain.species.url.split("/").length - 2] + ".png"}
@@ -51,7 +51,7 @@ const Evolve = (props) => {
             evolutionChainData.chain.evolves_to.length ? <Col sm='4' className='text-center'>
               <div className='d-flex flex-row'>
                 <div>
-                  <Link to={`/pokewiki/${evolutionChainData.chain.evolves_to[0].species.name}`}>
+                  <Link to={`/pokewiki/${evolutionChainData.chain.evolves_to[0].species.name}`} className='custom-link'>
                     <div>
                       <img
                         src={IMAGE_URL + evolutionChainData.chain.evolves_to[0].species.url.split("/")[evolutionChainData.chain.evolves_to[0].species.url.split("/").length - 2] + ".png"}
@@ -75,7 +75,7 @@ const Evolve = (props) => {
             (evolutionChainData.chain.evolves_to.length && evolutionChainData.chain.evolves_to[0].evolves_to.length) ? <Col sm='4' className='text-center'>
               <div className='d-flex flex-row'>
                 <div>
-                  <Link to={`/pokewiki/${evolutionChainData.chain.evolves_to[0].evolves_to[0].species.name}`}>
+                  <Link to={`/pokewiki/${evolutionChainData.chain.evolves_to[0].evolves_to[0].species.name}`} className='custom-link'>
                     <div>
                       <img
                         src={IMAGE_URL + evolutionChainData.chain.evolves_to[0].evolves_to[0].species.url.split("/")[evolutionChainData.chain.evolves_to[0].evolves_to[0].species.url.split("/").length - 2] + ".png"}

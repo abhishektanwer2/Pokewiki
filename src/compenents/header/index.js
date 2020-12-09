@@ -56,11 +56,11 @@ const Header = (props) => {
                 </DropdownToggle>
                 <DropdownMenu right>
 
-                  <Link to={'/pokewiki/type/water'}><DropdownItem>Water</DropdownItem></Link>
-                  <Link to={'/pokewiki/type/fire'} ><DropdownItem>Fire</DropdownItem></Link>
-                  <Link to={'/pokewiki/type/grass'}  ><DropdownItem>Grass</DropdownItem></Link>
-                  <Link to={'/pokewiki/type/electric'}><DropdownItem>Electric</DropdownItem></Link>
-                  <Link to={'/pokewiki/type/dragon'}><DropdownItem>Dragon</DropdownItem></Link>
+                  <Link to={'/pokewiki/type/water'} className='custom-link'><DropdownItem>Water</DropdownItem></Link>
+                  <Link to={'/pokewiki/type/fire'} className='custom-link'><DropdownItem>Fire</DropdownItem></Link>
+                  <Link to={'/pokewiki/type/grass'} className='custom-link' ><DropdownItem>Grass</DropdownItem></Link>
+                  <Link to={'/pokewiki/type/electric'} className='custom-link'><DropdownItem>Electric</DropdownItem></Link>
+                  <Link to={'/pokewiki/type/dragon'} className='custom-link'><DropdownItem>Dragon</DropdownItem></Link>
 
                 </DropdownMenu>
               </UncontrolledDropdown>

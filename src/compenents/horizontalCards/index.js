@@ -6,7 +6,7 @@ import "./style.css";
 
 const HorizontalCards = (props) => {
   const { pokemons } = props;
-  const IMAGE_URL = process.env.IMAGE_URL;
+  const IMAGE_URL = process.env.REACT_APP_IMAGE_URL;
   return <div className="cardsContainer py-2">
     {
       pokemons.map((pokemonData, index) => {
@@ -16,7 +16,7 @@ const HorizontalCards = (props) => {
         return (
           <div key={index} className="pokemonCard">
             <Card className="box">
-              <Link to={`/pokewiki/${name}`}>
+              <Link to={`/pokewiki/${name}`} className='custom-link'>
                 <div>
                   <img src={IMAGE_URL + id + ".png"} className="w-100" />
                 </div>
