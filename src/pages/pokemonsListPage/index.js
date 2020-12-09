@@ -5,7 +5,7 @@ import { Link } from "react-router-dom"
 import Loader from '../../compenents/loader'
 import SomethingWentWrongComponent from '../../compenents/somethingWentWrong'
 
-import apiInstance from '../../api'
+// import apiInstance from '../../api'
 
 const PokemonList = (props) => {
   const [pokemonsData, setPokemonsData] = useState([])

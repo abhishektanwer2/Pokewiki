@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 import { Carousel } from 'react-responsive-carousel';
 
 import Loader from '../loader'
-import apiInstance from '../../api'
+// import apiInstance from '../../api'
 
 import './banner.css'
 

@@ -14,7 +14,7 @@ import {
 } from "reactstrap";
 import { Link } from 'react-router-dom';
 
-import apiInstance from '../../api'
+// import apiInstance from '../../api'
 import SearchBarComponent from '../Searchbar';
 
 const Header = (props) => {
