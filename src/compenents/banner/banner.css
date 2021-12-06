@@ -1,0 +1,10 @@
+.carousel .slide {
+  background-color: #253146 !important;
+}
+.carousel-root {
+  height: 300px;
+}
+.carousel-root img {
+  height: 300px;
+  width: auto !important;
+}

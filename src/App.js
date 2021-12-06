@@ -1,14 +1,28 @@
-import React from 'react';
-import './App.css';
+import React from "react";
+import { hot } from "react-hot-loader";
+import { Route } from 'react-router-dom'
 
-function App() {
+import Header from './compenents/header'
+import Footer from './compenents/footer'
+import HomePage from "./pages/homepage";
+import Pokedetails from "./pages/pokeDetailsPage";
+import PokemonList from './pages/pokemonsListPage'
+
+import "./App.css";
+import "./styles/custom.css";
+
+function App(props) {
   return (
-    <div className="App">
-      <header className="App-header">
-        <p>Hello World!</p>
-      </header>
+    <div>
+      <Header history={props.history} />
+      <div className='main-content-container'>
+        <Route exact path='/' name='PokeWiki' component={HomePage} />
+        <Route exact path='/pokewiki/:name' name='Pokemon Details' component={Pokedetails} />
+        <Route exact path='/pokewiki/type/:name' name='Pokemons' component={PokemonList} />
+      </div>
+      <Footer />
     </div>
   );
 }
 
-export default App;
+export default hot(module)(App);
